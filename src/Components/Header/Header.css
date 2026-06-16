@@ -1,0 +1,9 @@
+.page-header{
+    @apply flex items-center gap-4  p-4 
+}
+
+
+
+.page-logo{
+  @apply flex  items-center
+}
