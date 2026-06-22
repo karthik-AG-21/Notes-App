@@ -1,0 +1,7 @@
+.form{
+    @apply  rounded-lg bg-white shadow-md p-6 mt-10 mx-auto max-w-lg
+}
+
+.title-box{
+    @apply  flex flex-col mb-4;
+}

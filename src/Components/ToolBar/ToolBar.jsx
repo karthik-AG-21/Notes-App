@@ -10,7 +10,7 @@ function ToolBar(){
         <button>Sort </button>
         <button>Filter </button>
         <button>Grid </button>
-        <button>+ New Note </button>
+        
         </div>
        
     )
