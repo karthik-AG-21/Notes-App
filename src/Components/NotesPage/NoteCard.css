@@ -1,5 +1,5 @@
 .note-card {
-  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 text-black dark:text-white max-w-96;
+  @apply dark:bg-gray-800 rounded-xl shadow-md p-4 text-black dark:text-white max-w-96;
 }
 
 .note-card h3 {
@@ -10,10 +10,12 @@
   @apply text-gray-600 dark:text-gray-300;
 }
 
+
 .tag-badge{
   @apply px-2 py-1 rounded-lg text-xs bg-blue-100 dark:bg-gray-700;
 }
 
+
 .notes-grid{
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 m-4;
 }
