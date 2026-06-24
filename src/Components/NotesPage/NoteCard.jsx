@@ -2,7 +2,7 @@ import "./NoteCard.css"
 import { LuPin, LuArchive, LuPencil, LuTrash2 } from "react-icons/lu";
 
 
-function NoteCard({ note,  deleteNote }) {
+function NoteCard({ note,  deleteNote, editNote,pinNote, archiveNote }) {
   if (!note) {
     return <h2>loading ....</h2>
   }
@@ -41,10 +41,10 @@ function NoteCard({ note,  deleteNote }) {
 
         <div className="flex gap-6">
 
-          <LuPencil />
-          <LuArchive />
+          <LuPencil  onClick={()=> editNote(note)}/>
+          <LuArchive  onClick={() => archiveNote(note.id)}/>
           <LuTrash2 onClick={() => deleteNote(note.id)} />
-          <LuPin />
+          <LuPin onClick={()=> pinNote(note.id) } />
 
         </div>
 

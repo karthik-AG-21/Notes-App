@@ -1,6 +1,6 @@
 import NoteCard from "./NoteCard"
 
-function NotesGrid({note, deleteNote}) {
+function NotesGrid({note, deleteNote , editNote, pinNote, displayNotes, archiveNote}) {
 
   const pinnedNotes = note.filter(
     (item) => item.Pinned
@@ -12,21 +12,14 @@ function NotesGrid({note, deleteNote}) {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">📌 Pinned Notes</h2>
+     
 
       <div className="notes-grid">
-      {pinnedNotes.map((note) => (
-        <NoteCard deleteNote={deleteNote} key={note.id} note={item} />
+      {displayNotes.map((note) => (
+        <NoteCard pinNote={pinNote} deleteNote={deleteNote} key={note.id} note={note}  editNote={editNote} archiveNote={archiveNote}/>
       ))}
       </div>
 
-      <h2 className="text-2xl font-bold mt-8 mb-4">📝 All Notes</h2>
-
-      <div className="notes-grid">
-      {normalNotes.map((item) => (
-        <NoteCard deleteNote={deleteNote}  key={item.id} note={item} />
-      ))}
-      </div>
     </>
   );
 }

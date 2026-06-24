@@ -5,7 +5,7 @@ import "./Header.css";
 
 
 
-function Header({ darkMode, setDarkMode }) {
+function Header({ darkMode, setDarkMode, setSearch, search}) {
     return (
         <header className="page-header">
 
@@ -14,13 +14,15 @@ function Header({ darkMode, setDarkMode }) {
                     className="search-input"
                     type="search"
                     placeholder="Search notes..."
+                    value={search}
+                    onChange={(e)=>setSearch(e.target.value)}
                 />
             </div>
 
-            <button className="filter-btn" >
+            {/* <button className="filter-btn" >
                 <FaFilter />
                 <span>Filter</span>
-            </button>
+            </button> */}
 
             <select className={`border rounded-lg px-3 py-2 ${darkMode
                     ? "bg-gray-800 text-white"

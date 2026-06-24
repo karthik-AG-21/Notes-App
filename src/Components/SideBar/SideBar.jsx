@@ -6,9 +6,9 @@ import './SideBar.css'
 import Tags from "./Tags";
 
 
-function SideBar({ setShowForm, darkMode}) {
+function SideBar({ setShowForm, darkMode, createNoteForm, setView , selectedTag , setSelectedTag, note}) {
 
-    const navItems = [{ name: "All Notes", icon: <IoHomeOutline /> }, { name: "Pinned Notes", icon: <LuPin /> }, { name: "Archived Notes", icon: <BiArchiveIn /> }]
+    const navItems = [{ name: "All Notes", view:"all", icon: <IoHomeOutline /> }, { name: "Pinned Notes", view:"pinned", icon: <LuPin /> }, { name: "Archived Notes", view:"archived", icon: <BiArchiveIn /> }]
 
     return (
         <>
@@ -20,7 +20,7 @@ function SideBar({ setShowForm, darkMode}) {
                     <h2 className="font-bold">Notes</h2>
                 </div>
                 <div className="flex justify-center items-center m-6">
-                    <button className="create-btn" onClick={() => setShowForm(true)}>+ New Note </button>
+                    <button className="create-btn" onClick={createNoteForm}>+ New Note </button>
                 </div>
 
 
@@ -28,6 +28,7 @@ function SideBar({ setShowForm, darkMode}) {
                     {navItems.map((item) => (
                         <button
                             key={item.name}
+                            onClick={()=>setView(item.view)}
                             className="flex items-center gap-3 font-medium  ">
                             <span className=" text-xl">{item.icon}</span>
                             <span>{item.name}</span>
@@ -36,7 +37,7 @@ function SideBar({ setShowForm, darkMode}) {
                 </div>
 
                 <div className="flex flex-col gap-5 m-6 mt-8">
-                    <Tags />
+                    <Tags note={note} selectedTag={selectedTag} setSelectedTag={setSelectedTag}/>
                 </div>
                 
             </div>

@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
 
-function NoteForm({ saveNote, setShowForm }) {
+function NoteForm({ saveNote, edit, updateNote, setShowForm }) {
+  console.log("HEY",updateNote)
 
+  console.log(edit)
+
+console.log("EDIT NOTE:", edit);
+  useEffect(()=>{
+    if(edit){
+      setTitle(edit.title)
+      setColor(edit.color)
+      setContent(edit.content)
+      setTags(edit.tags)
+    }else{
+      setTitle("")
+      setColor("")
+      setContent("")
+      setTags("")
+    }
+  },[edit])
 
 
   function noteData(e) {
@@ -32,13 +49,19 @@ function NoteForm({ saveNote, setShowForm }) {
    
 
     let formData = {
+      ...edit,
       tags,
       title,
       content,
-      color
+      color,
     }
     console.log("FORM DATA", formData);
-    saveNote(formData)
+    if(edit){
+      updateNote(formData)
+    }else{
+      saveNote(formData)
+    }
+    
     setShowForm(false)
   }
 
@@ -58,6 +81,7 @@ function NoteForm({ saveNote, setShowForm }) {
 
         <input
           type="text"
+          value={title}
           placeholder="Title"
           className="w-full border rounded-lg p-2 mb-4"
           onChange={(e) => setTitle(e.target.value)}
@@ -65,12 +89,13 @@ function NoteForm({ saveNote, setShowForm }) {
 
         <textarea
           maxLength={500}
+          value={content}
           placeholder="Write your note..."
           className="w-full border rounded-lg p-2 h-32 mb-4"
           onChange={(e) => setContent(e.target.value)}
         />
 
-        <select onChange={(e) => setTags(e.target.value)} className="w-full border rounded-lg p-2 mb-4">
+        <select value={tags} onChange={(e) => setTags(e.target.value)} className="w-full border rounded-lg p-2 mb-4">
           <option >Select Tag</option>
           <option >Study</option>
           <option >Work</option>
